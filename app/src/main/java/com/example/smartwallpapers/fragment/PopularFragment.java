@@ -16,17 +16,16 @@ import android.view.ViewGroup;
 import com.example.smartwallpapers.adapter.CosplayAdapter;
 import com.example.smartwallpapers.db.DatabaseHelper;
 import com.example.smartwallpapers.R;
-import com.example.smartwallpapers.adapter.DarkwallpaperAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link DarkwallpaperFragment#newInstance} factory method to
+ * Use the {@link PopularFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class DarkwallpaperFragment extends Fragment {
+public class PopularFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -43,7 +42,7 @@ public class DarkwallpaperFragment extends Fragment {
     private RecyclerView recycler_view_dark;
     private CosplayAdapter darkwallpaperAdapter;
 
-    public DarkwallpaperFragment() {
+    public PopularFragment() {
         // Required empty public constructor
     }
 
@@ -56,8 +55,8 @@ public class DarkwallpaperFragment extends Fragment {
      * @return A new instance of fragment DarkwallpaperFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static DarkwallpaperFragment newInstance(String param1, String param2) {
-        DarkwallpaperFragment fragment = new DarkwallpaperFragment();
+    public static PopularFragment newInstance(String param1, String param2) {
+        PopularFragment fragment = new PopularFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -80,7 +79,7 @@ public class DarkwallpaperFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_darkwallpaper, container, false);
+        View view = inflater.inflate(R.layout.fragment_popular, container, false);
 
         recycler_view_dark = (RecyclerView) view.findViewById(R.id.recycler_view_dark);
 
@@ -98,7 +97,7 @@ public class DarkwallpaperFragment extends Fragment {
         imageUrlList = new ArrayList<>();
         DatabaseHelper dbHelper  = new DatabaseHelper(requireContext());
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-        Cursor cursor = db.rawQuery("SELECT url FROM picture WHERE them='dark'", null);
+        Cursor cursor = db.rawQuery("SELECT url FROM picture WHERE them='Popular'", null);
         if (cursor.moveToFirst()) {
             do {
                 String url = cursor.getString(0);

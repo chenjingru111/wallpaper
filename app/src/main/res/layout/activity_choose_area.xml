@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+   >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:elevation="4dp">
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/back"
+            android:padding="15dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="Wallpaper"
+            android:textSize="20dp"
+            android:layout_marginLeft="20dp"
+            android:textColor="#ff333333"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:textStyle="bold"/>
+
+
+
+    </RelativeLayout>
+
+    <HorizontalScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@color/choose_item">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/tv_scenery"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:text="Category"
+                    android:textColor="@color/choose_text_item"
+                    android:gravity="center_vertical"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginLeft="15dp"/>
+                <TextView
+                    android:id="@+id/tv_scenery_bottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="6dp"
+                    android:background="@color/white"
+                    android:visibility="gone"
+                    />
+            </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tv_cosplay"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="Recent"
+                android:textColor="@color/choose_text_item"
+                android:gravity="center_vertical"
+                android:layout_marginRight="15dp"
+                android:layout_marginLeft="15dp"/>
+            <TextView
+                android:id="@+id/tv_cosplay_bottom"
+                android:layout_width="match_parent"
+                android:layout_height="6dp"
+                android:background="@color/white"
+                android:visibility="gone"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tv_wallpapers"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="Featured"
+                android:textColor="@color/choose_text_item"
+                android:gravity="center_vertical"
+                android:layout_marginRight="15dp"
+                android:layout_marginLeft="15dp"/>
+            <TextView
+                android:id="@+id/tv_wallpapers_bottom"
+                android:layout_width="match_parent"
+                android:layout_height="6dp"
+                android:background="@color/white"
+                android:visibility="gone"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tv_darkwallpapers"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="Popular"
+                android:textColor="@color/choose_text_item"
+                android:gravity="center_vertical"
+                android:layout_marginRight="15dp"
+                android:layout_marginLeft="15dp"/>
+            <TextView
+                android:id="@+id/tv_darkwallpapers_bottom"
+                android:layout_width="match_parent"
+                android:layout_height="6dp"
+                android:background="@color/white"
+                android:visibility="gone"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tv_characters"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="Random"
+                android:textColor="@color/choose_text_item"
+                android:gravity="center_vertical"
+                android:layout_marginRight="15dp"
+                android:layout_marginLeft="15dp"/>
+            <TextView
+                android:id="@+id/tv_characters_bottom"
+                android:layout_width="match_parent"
+                android:layout_height="6dp"
+                android:background="@color/white"
+                android:visibility="gone"/>
+        </LinearLayout>
+
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent" >
+
+    </FrameLayout>
+
+
+
+</LinearLayout>

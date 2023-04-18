@@ -1,4 +1,4 @@
-package com.example.smartwallpapers;
+package com.example.smartwallpapers.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,26 +9,19 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.pm.PackageManager;
-import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Point;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Build;
 import android.os.Bundle;
-import android.view.Display;
-import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.PopupWindow;
 import android.widget.TextView;
 
-import com.example.smartwallpapers.db.DatabaseHelper;
-import com.example.smartwallpapers.fragment.CharacterFragment;
-import com.example.smartwallpapers.fragment.CosplayFragment;
-import com.example.smartwallpapers.fragment.DarkwallpaperFragment;
-import com.example.smartwallpapers.fragment.SceneryFragment;
-import com.example.smartwallpapers.fragment.WallpaperFragment;
+import com.example.smartwallpapers.R;
+import com.example.smartwallpapers.fragment.RandomFragment;
+import com.example.smartwallpapers.fragment.RecentFragment;
+import com.example.smartwallpapers.fragment.PopularFragment;
+import com.example.smartwallpapers.fragment.CategoryFragment;
+import com.example.smartwallpapers.fragment.FeaturedFragment;
 import android.Manifest;
 
 public class ChooseAreaActivity extends AppCompatActivity {
@@ -44,13 +37,9 @@ public class ChooseAreaActivity extends AppCompatActivity {
     private TextView tv_darkwallpapers_bottom;
     private TextView tv_characters_bottom;
     private FrameLayout fragment_container;
-    private DatabaseHelper dbHelper;
-    private SQLiteDatabase db;
 
     private static final int REQUEST_CODE_PERMISSIONS = 123;
-    private ImageView iv_menu;
-    private int hight;
-    private int wide;
+    private ImageView iv_back;
 
 
     @Override
@@ -66,7 +55,14 @@ public class ChooseAreaActivity extends AppCompatActivity {
 
 
         initView();
-        initData();
+
+
+        iv_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         tv_scenery.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -100,57 +96,35 @@ public class ChooseAreaActivity extends AppCompatActivity {
         });
 
 
-
-        iv_menu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                View view = LayoutInflater.from(ChooseAreaActivity.this).inflate(R.layout.popwindow_menu_item,null);
-                final PopupWindow popWindow = new PopupWindow(view, wide,hight);//这里的长宽是取得的屏幕长宽代码见末端
-                popWindow.setAnimationStyle(R.style.AnimTopRight);
-                //部分机型点击空白区域无法使popowindow消失，加上这三句话
-                popWindow.setBackgroundDrawable(new BitmapDrawable());
-                popWindow.setFocusable(true);
-                popWindow.setOutsideTouchable(true);
-                popWindow.update();
-
-                popWindow.showAtLocation(view, Gravity.LEFT | Gravity.BOTTOM, 0,0);
-
-
-            }
-        });
     }
 
-    private void initData() {
-        hight = phoneHight();
-        wide = phoneWide_1_3();
-    }
 
 
     private void onButtonClick(View view) {
         switch (view.getId()){
             case R.id.tv_scenery:
                   setVisibility(View.VISIBLE,View.GONE,View.GONE,View.GONE,View.GONE);
-                getScenery(fragment_container,new SceneryFragment(),SceneryFragment.class.getName());
+                getScenery(fragment_container,new CategoryFragment(), CategoryFragment.class.getName());
 
                 break;
             case R.id.tv_cosplay:
                 setVisibility(View.GONE,View.VISIBLE,View.GONE,View.GONE,View.GONE);
-                getScenery(fragment_container,new CosplayFragment(),CosplayFragment.class.getName());
+                getScenery(fragment_container,new RecentFragment(), RecentFragment.class.getName());
 
                 break;
             case R.id.tv_wallpapers:
                 setVisibility(View.GONE,View.GONE,View.VISIBLE,View.GONE,View.GONE);
-                getScenery(fragment_container,new WallpaperFragment(),WallpaperFragment.class.getName());
+                getScenery(fragment_container,new FeaturedFragment(), FeaturedFragment.class.getName());
 
                 break;
             case R.id.tv_darkwallpapers:
                 setVisibility(View.GONE,View.GONE,View.GONE,View.VISIBLE,View.GONE);
-                getScenery(fragment_container,new DarkwallpaperFragment(),DarkwallpaperFragment.class.getName());
+                getScenery(fragment_container,new PopularFragment(), PopularFragment.class.getName());
 
                 break;
             case R.id.tv_characters:
                 setVisibility(View.GONE,View.GONE,View.GONE,View.GONE,View.VISIBLE);
-                getScenery(fragment_container,new CharacterFragment(),CosplayFragment.class.getName());
+                getScenery(fragment_container,new RandomFragment(), RandomFragment.class.getName());
 
                 break;
 
@@ -168,9 +142,12 @@ public class ChooseAreaActivity extends AppCompatActivity {
         tv_wallpapers_bottom = (TextView) findViewById(R.id.tv_wallpapers_bottom);
         tv_darkwallpapers_bottom = (TextView) findViewById(R.id.tv_darkwallpapers_bottom);
         tv_characters_bottom = (TextView) findViewById(R.id.tv_characters_bottom);
-        iv_menu = (ImageView) findViewById(R.id.iv_menu);
+        iv_back = (ImageView) findViewById(R.id.iv_back);
 
         fragment_container = (FrameLayout) findViewById(R.id.fragment_container);
+
+        setVisibility(View.VISIBLE,View.GONE,View.GONE,View.GONE,View.GONE);
+        getScenery(fragment_container,new CategoryFragment(), CategoryFragment.class.getName());
     }
 
 
@@ -229,23 +206,7 @@ public class ChooseAreaActivity extends AppCompatActivity {
     }
 
 
-    private int phoneHight(){
-        Display display = getWindowManager().getDefaultDisplay();
-        Point point = new Point();
-        display.getSize(point);
-        int height = display.getHeight();
-        return height;
-    }
 
-    private int phoneWide_1_3(){
-        Display display = getWindowManager().getDefaultDisplay();
-        Point point = new Point();
-        display.getSize(point);
-        int wide = display.getWidth();
-        int wide_1_3 = wide / 3;
-        return wide_1_3;
-
-    }
 
 
 

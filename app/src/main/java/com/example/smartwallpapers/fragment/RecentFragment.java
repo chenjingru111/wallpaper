@@ -22,10 +22,10 @@ import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link CosplayFragment#newInstance} factory method to
+ * Use the {@link RecentFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class CosplayFragment extends Fragment {
+public class RecentFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -41,7 +41,7 @@ public class CosplayFragment extends Fragment {
     private CosplayAdapter adapter;
 
 
-    public CosplayFragment() {
+    public RecentFragment() {
         // Required empty public constructor
     }
 
@@ -54,8 +54,8 @@ public class CosplayFragment extends Fragment {
      * @return A new instance of fragment CosplayFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static CosplayFragment newInstance(String param1, String param2) {
-        CosplayFragment fragment = new CosplayFragment();
+    public static RecentFragment newInstance(String param1, String param2) {
+        RecentFragment fragment = new RecentFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -78,7 +78,7 @@ public class CosplayFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_cosplay, container, false);
+        View view = inflater.inflate(R.layout.fragment_recent, container, false);
 
 
 
@@ -99,7 +99,7 @@ public class CosplayFragment extends Fragment {
         imageUrlList = new ArrayList<>();
         DatabaseHelper dbHelper  = new DatabaseHelper(requireContext());
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-        Cursor cursor = db.rawQuery("SELECT url FROM picture WHERE them='cosplay'", null);
+        Cursor cursor = db.rawQuery("SELECT url FROM picture WHERE them='Recent'", null);
         if (cursor.moveToFirst()) {
             do {
                 String url = cursor.getString(0);

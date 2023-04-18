@@ -1,4 +1,4 @@
-package com.example.smartwallpapers;
+package com.example.smartwallpapers.activity;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.smartwallpapers.R;
 import com.example.smartwallpapers.db.DatabaseHelper;
 import com.example.smartwallpapers.tools.ImageDownloader;
 import com.example.smartwallpapers.tools.WallpaperUtils;
