@@ -11,7 +11,7 @@ import java.io.IOException;
 
 public class CacheUtils {
 
-    public static void clearCache(Context context) {
+    public  void clearCache(Context context) {
         try {
             // 清除内部缓存
             File internalCacheDir = context.getCacheDir();

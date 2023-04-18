@@ -8,8 +8,8 @@
 
     <ImageView
         android:id="@+id/iv_pic_cositem"
-        android:layout_width="220dp"
-        android:layout_height="290dp"
+        android:layout_width="280dp"
+        android:layout_height="300dp"
         android:padding="10dp"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"/>

@@ -27,11 +27,24 @@ public class FirstActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        rl_right.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(FirstActivity.this, SettingActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void initView() {
         rl_left = (RelativeLayout) findViewById(R.id.rl_left);
         rl_right = (RelativeLayout) findViewById(R.id.rl_right);
 
+    }
+
+    public void onBackPressed() {
+        Intent intent = new Intent(FirstActivity.this, ExitActivity.class);
+        startActivity(intent);
     }
 }
