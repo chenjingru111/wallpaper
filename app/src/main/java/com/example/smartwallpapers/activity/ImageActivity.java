@@ -56,6 +56,8 @@ public class ImageActivity extends Activity {
             }
         });
 
+
+        //ImageView.ScaleType center = ImageView.ScaleType.CENTER;
         iv_set_phone_bg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -2,18 +2,18 @@
 <resources>
 
 
-    <string name="wallpaper">Wallpaper</string>
-    <string name="category">Category</string>
-    <string name="recent">Recent</string>
-    <string name="featured">Featured</string>
-    <string name="popular">Popular</string>
-    <string name="random">Random</string>
-    <string name="delete">Delete</string>
-    <string name="are_you_sure_want_to_exit">Are you sure, want to Exit?</string>
-    <string name="yes">Yes</string>
-    <string name="no">NO</string>
-    <string name="setting">Setting</string>
-    <string name="clear_cache">Clear Cache</string>
+    <string name="wallpaper">kertas dinding</string>
+    <string name="category">"kategori "</string>
+    <string name="recent">baru-baru ini</string>
+    <string name="featured">"dihighlightkan "</string>
+    <string name="popular">"popular "</string>
+    <string name="random">"rawak "</string>
+    <string name="delete">padam</string>
+    <string name="are_you_sure_want_to_exit">Adakah anda pasti ingin keluar?</string>
+    <string name="yes">"Ya "</string>
+    <string name="no">"Tidak "</string>
+    <string name="setting">"Tetapan "</string>
+    <string name="clear_cache">Kosongkan Cache</string>
     <string name="trendy_cool_wallpaper">Trendy Cool Wallpaper</string>
     <string name="app_version_v1_0">App Version v1.0</string>
 </resources>
